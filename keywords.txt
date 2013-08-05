@@ -1,0 +1,26 @@
+#######################################
+# Syntax Coloring Map For shiftRegister
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+shiftRegister	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+srInit	KEYWORD2
+srPort	KEYWORD2
+srSend	KEYWORD2
+srRead	KEYWORD2
+srDigitalWrite	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+_74XX595	LITERAL1
+
