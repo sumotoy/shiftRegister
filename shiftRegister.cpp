@@ -28,19 +28,19 @@ void shiftRegister::_fastShiftOut(uint8_t val){
 	uint8_t i;
 	for (i = 0; i < this->_ports; i++)  {
 		if (_bitOrder == 0){//upper first
-			#if defined(__MK20DX128__)
+			#if defined(__MK20DX128__) || defined(__MK20DX256__) || defined(__MKL26Z64__)
 			::digitalWriteFast(this->_data_pin, !!(val & (1 << i)));
 			#else
 			::digitalWrite(this->_data_pin, !!(val & (1 << i)));
 			#endif
 		} else {//lower first
-			#if defined(__MK20DX128__)
+			#if defined(__MK20DX128__) || defined(__MK20DX256__) || defined(__MKL26Z64__)
 			::digitalWriteFast(this->_data_pin, !!(val & (1 << ((this->_ports-1) - i))));
 			#else
 			::digitalWrite(this->_data_pin, !!(val & (1 << ((this->_ports-1) - i))));
 			#endif
 		}	
-		#if defined(__MK20DX128__)
+		#if defined(__MK20DX128__) || defined(__MK20DX256__) || defined(__MKL26Z64__)
 		::digitalWriteFast(this->_clock_pin, HIGH);
 		::digitalWriteFast(this->_clock_pin, LOW);
 		#else
@@ -130,7 +130,7 @@ void shiftRegister::srDigitalWrite(uint8_t pin,bool data){
 //
 void shiftRegister::srSend(void){
 	uint8_t i;
-#if defined(__MK20DX128__)
+#if defined(__MK20DX128__) || defined(__MK20DX256__) || defined(__MKL26Z64__)
 	::digitalWriteFast(this->_latch_pin,LOW);
 #else
 	::digitalWrite(this->_latch_pin,LOW);
@@ -138,7 +138,7 @@ void shiftRegister::srSend(void){
 	for (i=0;i<_chips;i++){
 		_fastShiftOut(_data[i]);
 	}
-#if defined(__MK20DX128__)
+#if defined(__MK20DX128__) || defined(__MK20DX256__) || defined(__MKL26Z64__)
 	::digitalWriteFast(this->_latch_pin,HIGH);
 #else
 	::digitalWrite(this->_latch_pin,HIGH);

@@ -12,7 +12,7 @@ void setup()
 {
   Serial.begin(38400);
   Serial.println("start");
-  if (sr.initSR(DATA_PIN,LATCH_PIN,CLOCK_PIN,SR_CHIPS,_74XX595)){
+  if (sr.srInit(DATA_PIN,LATCH_PIN,CLOCK_PIN,SR_CHIPS,_74XX595)){
       //good! chip ready
   } else {
       //ARGH! something wrong!
@@ -57,4 +57,3 @@ void loop()
   sr.srSend();
   delay(50);
 }
-

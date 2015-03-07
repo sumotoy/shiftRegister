@@ -9,7 +9,7 @@ universal shiftRegister basic Library
 --------------------------------------------------------------------------------------
 A simple C library for most shift register chips
 that can be easily included in other libraries.
-version 1.0b2 (Energia IDE compatibility?)
+version 1.0b5
 coded by Max MC Costa for s.u.m.o.t.o.y [sumotoy(at)gmail.com]
 --------------------------------------------------------------------------------------
 Library works with most arduino compatible micros and Teensy2/3
@@ -19,23 +19,11 @@ Library works with most arduino compatible micros and Teensy2/3
 #ifndef shiftRegister_h
 #define shiftRegister_h
 
-#if defined(ENERGIA) // LaunchPad, FraunchPad and StellarPad specific
-#include "Energia.h"
-#else
-	#if ARDUINO < 100
-		#include "WProgram.h"
-	#else
-		#include "Arduino.h"
-	#endif
-#endif
+#include "Arduino.h"
 
 
 #define MAXSRCHIPS 4//change this if you are using more than 4 chips
-
-
 #define SRDEFAULT 0b00000000
-
-
 typedef enum SR_type{
      _74XX595 = 1
 };
